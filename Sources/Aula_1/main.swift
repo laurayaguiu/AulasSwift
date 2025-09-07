@@ -1,24 +1,16 @@
-import Foundation
+// chamada da atv-1 
+calcularNumeros(array: listaNumeros)
 
-print("Aula 1 de Swift!!")
-class PessoaRocketseat {
-    var nome: String
-    var trilha: String
+// chamada da atv-2
+let detalhesDoVoo = obterDetalhesVoo()
+print("O voo: \(detalhesDoVoo.codigo) para: \(detalhesDoVoo.destino) está com status: \(detalhesDoVoo.pontual) ")
 
-    // Construtor (inicializador) da classe
-    init(nome: String, trilha: String) {
-        self.nome = nome
-        self.trilha = trilha
-    }
-
-    func seApresentar() {
-        print("Fala, dev! Eu sou \(nome) e faço parte da trilha \(trilha).")
-    }
-}
-
-// Criando objetos (instâncias) da classe PessoaRocketseat
-let rodrigo = PessoaRocketseat(nome: "Rodrigo", trilha: "iOS")
-let isabela = PessoaRocketseat(nome: "Isabela", trilha: "iOS")
-
-rodrigo.seApresentar()  // Output: Fala, dev! Eu sou Rodrigo e faço parte da trilha iOS.
-isabela.seApresentar()  // Output: Fala, dev! Eu sou Isabela e faço parte da trilha iOS.
+// chamada da atv-3
+let relatorioDeHoje = calcularVendasDoDia()
+print("""
+--- Relatório de Vendas [30/08/2025] ---
+Produtos Vendidos:\(relatorioDeHoje.produtosVendidos) unidades
+Valor total: R$ \(relatorioDeHoje.valorTotal)
+Cliente Destaque do Dia: \(relatorioDeHoje.clienteDestaque)
+----------------------------------------
+""")
