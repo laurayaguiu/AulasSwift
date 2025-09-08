@@ -38,17 +38,14 @@ var resp = CarroDeEntrega(placa: "32f4", velocidade: 75)
 resp.acelerar()
 resp.obterLocalizacao()
 */
+
 protocol VendavelOnline {
-    var preco: Double
-     func adicionarAoCarrinho() {
-        print("item adicionado!")
-     }
-        
+    var preco: Double { get }
+    func adicionarAoCarrinho()
 }
 
 protocol Enviavel {
-    var pesoEmGramas: Int
-    
+    var pesoEmGramas: Int { get }
     func calcularCustoEnvio() -> Double
 }
 
@@ -64,16 +61,15 @@ class LivroFisico: VendavelOnline, Enviavel {
         self.preco = preco
         self.pesoEmGramas = pesoEmGramas
     }
-    
+
     func adicionarAoCarrinho() {
-        print("Olivro \(titulo) foi adicionado ao carrinho,")
+        print("O livro \(titulo) foi adicionado ao carrinho.")
     }
 
-    func calcularCustoEnvio() {
-        var frete = (pesoEmGramas/100)*2.5
+    func calcularCustoEnvio() -> Double {
+        return (Double(pesoEmGramas) / 100.0) * 2.5
     }
-
-} 
+}
 
 struct CursoOnline: VendavelOnline {
     var nome: String
@@ -91,5 +87,11 @@ struct CursoOnline: VendavelOnline {
     }
 }
 
-var LivroFisico = LivroFisico(titulo: "alice p m", autor: "laura", preco: 120.5, pesoEmGramas: 500)
+var meuLivroFisico = LivroFisico(titulo: "Alice para meninas", autor: "Laura", preco: 120.5, pesoEmGramas: 500)
+var meuCursoOnline = CursoOnline(nome: "Marugoto", instrutor: "Laura", preco: 200)
 
+meuLivroFisico.adicionarAoCarrinho()
+let custoEnvio = meuLivroFisico.calcularCustoEnvio()
+print("Custo de envio: R$ \(custoEnvio)")
+
+meuCursoOnline.adicionarAoCarrinho()
